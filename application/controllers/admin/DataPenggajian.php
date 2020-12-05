@@ -16,8 +16,7 @@ class DataPenggajian extends CI_Controller {
             $tahun = date('Y');
             $bulantahun = $bulan.$tahun;
         }
-        $data['potongan'] = $this->penggajianModel->get_data('potongan_gaji')->result();
-
+        $data['potongan_alpha'] = $this->db->query("SELECT jml_potongan FROM potongan_gaji WHERE potongan = 'Alpha'")->row();
         $data['gaji'] = $this->db->query("
         SELECT
             data_pegawai.nik,

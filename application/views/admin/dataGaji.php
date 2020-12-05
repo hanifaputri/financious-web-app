@@ -57,65 +57,79 @@
                         ?>
                     </select>
                 </div>
-
                 <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Tampilkan Data</button>
-                
-                <!-- Tambah Data -->
-                <a class="btn btn-success btn-icon-split mb-2 ml-2">
-                    <span class="icon text-white">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Input Kehadiran</span>
-                </a>
             </form>
         </div>
     </div>
+    <!-- Cek parameter tahun & bulan -->
+    <?php 
+    if (!(isset($_GET['bulan']) && $_GET['bulan']!='') && 
+        !(isset($_GET['tahun']) && $_GET['tahun']!='')){
+        $bulan = date('m');
+        $tahun = date('Y');
+        $bulantahun = $bulan.$tahun;
+    ?>
+        <div class="alert alert-danger">
+            Mohon masukkan bulan dan tahun terlebih dahulu.
+        </div>
+    <?php
+    } else {
+        $bulan = $_GET['bulan'];
+        $tahun = $_GET['tahun'];
+    ?>
+        <!-- Cek kondisi database -->
+        <?php
+        $isDataExist = count($gaji);
+        if (!$isDataExist){ ?>
+            <div class="alert alert-danger">
+                Oops, mohon maaf data gaji pada bulan ini belum tersedia.
+            </div>
+        <?php } else { ?>
+        <!-- Data ada -->
+            <div class="alert alert-info">
+                Menampilkan data gaji pegawai 
+                bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
+                tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr class="text-center">
+                        <th>NO</th>
+                        <th>Nama Pegawai</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Jabatan</th>
+                        <th>Gaji Pokok</th>
+                        <th>Tj. Transportasi</th>
+                        <th>Uang Makan</th>
+                        <th>Potongan</th>
+                        <th>Total Gaji</th>
+                    </tr>
+                    <!-- Table Content -->
+                    <?php 
+                    $alpha = $potongan_alpha->jml_potongan;
+                    $no=1;
+                    foreach($gaji as $g){
+                        $potongan = $g->alpha * $alpha;
+                        $total_gaji = ($g->gaji_pokok) + ($g->tj_transport) + ($g->uang_makan) - ($potongan);
+                    ?>
+                    <tr>
+                        <td><?php echo $no++;?></td>
+                        <td><?php echo $g->nama_pegawai?></td>
+                        <td><?php echo $g->jenis_kelamin?></td>
+                        <td><?php echo $g->nama_jabatan?></td>
+                        <td>Rp <?php echo number_format($g->gaji_pokok,0,',','.')?></td>
+                        <td>Rp <?php echo number_format($g->tj_transport,0,',','.')?></td>
+                        <td>Rp <?php echo number_format($g->uang_makan,0,',','.')?></td>
+                        <td>Rp <?php echo number_format($potongan,0,',','.')?></td>
+                        <td>Rp <?php echo number_format($total_gaji,0,',','.')?></td>
+                    </tr>
+                    <?php } ?>
 
-    <!-- Content Start -->
-    <div class="alert alert-info">
-        Menampilkan data gaji pegawai 
-        bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
-        tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
-    </div>
-    
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <tr class="text-center">
-                <th>NO</th>
-                <th>Nama Pegawai</th>
-                <th>Jenis Kelamin</th>
-                <th>Jabatan</th>
-                <th>Gaji Pokok</th>
-                <th>Tj. Transportasi</th>
-                <th>Uang Makan</th>
-                <th>Potongan</th>
-                <th>Total Gaji</th>
-            </tr>
-
-            <?php 
-            foreach($potongan as $p) { 
-                $alpha = $p->jml_potongan;
-            }?>
-            <?php $no=1; foreach($gaji as $g) : ?>
-            <?php 
-                $potongan = $g->alpha * $alpha;
-                echo $alpha;
-            die();
-            ?>
-            <tr>
-                <td><?php echo $no++;?></td>
-                <td><?php echo $g->nama_pegawai?></td>
-                <td><?php echo $g->jenis_kelamin?></td>
-                <td><?php echo $g->nama_jabatan?></td>
-                <td>Rp <?php echo number_format($g->gaji_pokok,0,',','.')?></td>
-                <td>Rp <?php echo number_format($g->tj_transport,0,',','.')?></td>
-                <td>Rp <?php echo number_format($g->uang_makan,0,',','.')?></td>
-                <td>Rp <?php echo number_format($potongan,0,',','.')?></td>
-            <?php endforeach; ?>
-            </tr>
-        </table>
-    </div>
-
+                </table>
+            </div>
+        <?php } ?>
+    <?php } ?>
 </div>
 </div>
 <!-- End of Main Content -->
