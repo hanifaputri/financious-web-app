@@ -17,6 +17,7 @@ class DataAbsensi extends CI_Controller {
             $bulantahun = $bulan.$tahun;
         }
         
+        $data['jumlah_pegawai'] = $this->db->query("SELECT * FROM data_pegawai")->result();
         $data['absensi'] = $this->db->query("
             SELECT data_kehadiran.*,
             data_pegawai.nama_pegawai,

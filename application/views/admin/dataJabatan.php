@@ -1,17 +1,20 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
+    <div class="d-flex">
+        <div class="p-2">
+            <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
+        </div>
+        <div class="ml-auto p-2">
+            <!-- Tambah Data -->
+            <a class="btn btn-success btn-icon-split mb-4"  href="<?php echo base_url('admin/dataJabatan/tambahData')?>">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Tambah Data</span>
+            </a>
+        </div>
     </div>
-    <!-- Tambah Data -->
-    <a class="btn btn-success btn-icon-split mb-4"  href="<?php echo base_url('admin/dataJabatan/tambahData')?>">
-        <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Tambah Data</span>
-    </a>
+
 
     <!-- Content -->
     <?php echo $this->session->flashdata('pesan') ?>

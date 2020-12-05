@@ -24,6 +24,12 @@
                     <span>Dashboard</span></a>
             </li>
 
+            <!-- Data Start -->
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Data
+            </div>
+
             <!-- Nav Item - Pages Collapse Menu - Master Data -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -70,6 +76,12 @@
                     </div>
                 </div>
             </li>
+            
+            <!-- User Start -->
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                User
+            </div>
 
             <!-- Nav Item - Password -->
             <li class="nav-item">
@@ -90,12 +102,12 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message 
+            <!-- Sidebar Message -->
             <div class="sidebar-card">
                 <img class="sidebar-card-illustration mb-2" src="<?php echo base_url() ?>assets/img/undraw_rocket.svg" alt="">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>-->
+            </div>
 
         </ul>
         <!-- End of Sidebar -->

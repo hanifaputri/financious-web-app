@@ -1,8 +1,8 @@
 <div class="container-fluid">
-
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
     </div>
+    <div class="ml-auto p-2">Flex item</div>
 
     <div class="card">
         <div class="card-body">
@@ -24,8 +24,8 @@
                 <div class="form-group">
                     <label>Jenis Kelamin</label>
                     <select name="jenis_kelamin" class="form-control">
-                        <option value="January" <?php if ($p->jenis_kelamin == 'Laki-laki') echo'selected'; ?>>Laki-laki</option>
-                        <option value="February" <?php if ($p->jenis_kelamin == 'Perempuan') echo'selected'; ?>>Perempuan</option>
+                        <option value="Laki-laki" <?php if ($p->jenis_kelamin == 'Laki-laki') echo'selected'; ?>>Laki-laki</option>
+                        <option value="Perempuan" <?php if ($p->jenis_kelamin == 'Perempuan') echo'selected'; ?>>Perempuan</option>
                     </select>
                     <?php echo form_error('jenis_kelamin', '<div class="text-small text-danger"></div>') ?>
                 </div>
