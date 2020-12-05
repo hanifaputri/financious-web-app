@@ -108,7 +108,7 @@
             $isDataExist = count($absensi);
             if (!$isDataExist){ ?>
                 <div class="alert alert-danger">
-                    Oops, mohon maaf data pada bulan dan tahun yang Anda pilih belum ada. Silahkan tambah data terlebih dahulu.</div>
+                    Oops, mohon maaf data pada bulan dan tahun yang Anda pilih belum ada. Silahkan input data kehadiran terlebih dahulu.</div>
             <?php
             } else { ?>
             <div class="alert alert-info">
