@@ -44,15 +44,8 @@
                         <?php } ?>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Tampilkan Data</button>
+                <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Generate Data</button>
                 
-                <!-- Tambah Data -->
-                <a class="btn btn-success btn-icon-split mb-2 ml-2"  href="<?php echo base_url('admin/dataAbsensi/inputAbsensi')?>">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Input Kehadiran</span>
-                </a>
             </form>
         </div>
     </div>
@@ -64,28 +57,23 @@
             $tahun = $_GET['tahun'];
             $bulantahun = $bulan.$tahun;
         } else {
-            $bulan = date('NIK');
+            $bulan = date('m');
             $tahun = date('Y');
             $bulantahun = $bulan.$tahun;
         }
     ?>
 
-    <?php 
-        $isDataExist = count($absensi);
-        if (!$isDataExist){ ?>
-            <div class="alert alert-danger">
-                Oops, mohon maaf data pada bulan dan tahun yang Anda pilih belum ada. Silahkan tambah data terlebih dahulu.</div>
-        <?php
-        } else { ?>
-        <div class="alert alert-info">
-            Menampilkan data kehadiran pegawai 
-            bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
-            bahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
-        </div>
-
+    <div class="alert alert-info">
+        Menampilkan data kehadiran pegawai 
+        bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
+        tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
+    </div>
+    <form method="POST">
+        <button name="submit" class="btn btn-success mb-3" type="submit">Simpan</button>
+        
         <table class="table table-bordered table-striped">
             <tr class="text-center">
-                <td>Nomor</td>
+                <td>No.</td>
                 <td>NIK</td>
                 <td>Nama Pegawai</td>
                 <td>Jenis Kelamin</td>
@@ -96,21 +84,18 @@
             </tr>
             <?php $no=1; foreach ($input_absensi as $a) : ?>
                 <tr>
-                    <td><?php echo $no++?></td>
+                    <td><?php echo $no++?>.</td>
                     <td><?php echo $a->nik?></td>
                     <td><?php echo $a->nama_pegawai?></td>
                     <td><?php echo $a->jenis_kelamin?></td>
                     <td><?php echo $a->nama_jabatan ?></td>
-                    <td><?php echo $a->hadir?></td>
-                    <td><?php echo $a->sakit?></td>
-                    <td><?php echo $a->alpha?></td>
+                    <td width="8%"><input type="number" name="hadir[]" value="0" class="form-control"></td>
+                    <td width="8%"><input type="number" name="sakit[]" value="0" class="form-control"></td>
+                    <td width="8%"><input type="number" name="alpha[]" value="0" class="form-control"></td>
                 </tr>
             <?php endforeach; ?>
         </table>
-
-    <?php
-        }
-    ?>
+    </form>
 
 </div>
 </div>
