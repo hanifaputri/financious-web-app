@@ -17,7 +17,6 @@ class DataAbsensi extends CI_Controller {
             $bulantahun = $bulan.$tahun;
         }
         
-        // Tampilkan data selain yang sudah diinput
         $data['absensi'] = $this->db->query("
             SELECT data_kehadiran.*,
             data_pegawai.nama_pegawai,
@@ -39,6 +38,36 @@ class DataAbsensi extends CI_Controller {
 
     public function inputAbsensi()
     { 
+        if ($this->input->post('submit', TRUE) == 'submit'){
+            $post = $this->input->post();
+
+            foreach ($post['bulan'] as $key => $value) {
+                if($post['bulan'][$key] != '' || $nik['bulan'][$key] != ''){
+                    $simpan[] = array(
+                        'bulan'          => $post['bulan'][$key],
+                        'nik'            => $post['nik'][$key],
+                        'nama_pegawai'   => $post['nama_pegawai'][$key],
+                        'jenis_kelamin'  => $post['jenis_kelamin'][$key],
+                        'nama_jabatan'   => $post['nama_jabatan'][$key],
+                        'hadir'          => $post['hadir'][$key],
+                        'sakit'          => $post['sakit'][$key],
+                        'alpha'          => $post['alpha'][$key]
+                    );
+                }
+            }
+
+            $this->penggajianModel->insert_batch('data_kehadiran', $simpan);
+            $this->session->set_flashdata('pesan','
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Data Berhasil Ditambahkan!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            ');
+            redirect('admin/dataAbsensi');
+        }
+
         $data['title'] = "Form Input Absensi";
 
         // Filter Absensi
@@ -52,6 +81,7 @@ class DataAbsensi extends CI_Controller {
             $bulantahun = $bulan.$tahun;
         }
 
+        // Tampilkan data selain yang sudah diinput
         $data['input_absensi'] = $this->db->query("
         SELECT data_pegawai.*, 
         data_jabatan.nama_jabatan

@@ -69,7 +69,7 @@
         tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
     </div>
     <form method="POST">
-        <button name="submit" class="btn btn-success mb-3" type="submit">Simpan</button>
+        <button name="submit" value="submit" class="btn btn-success mb-3" type="submit">Simpan</button>
         
         <table class="table table-bordered table-striped">
             <tr class="text-center">
@@ -84,6 +84,13 @@
             </tr>
             <?php $no=1; foreach ($input_absensi as $a) : ?>
                 <tr>
+                    <!-- Hidden field -->
+                    <input type="hidden" name="bulan[]" value="<?php echo $bulantahun ?>" class="form-control">
+                    <input type="hidden" name="nik[]" value="<?php echo $a->nik ?>" class="form-control">
+                    <input type="hidden" name="nama_pegawai[]" value="<?php echo $a->nama_pegawai ?>" class="form-control">
+                    <input type="hidden" name="jenis_kelamin[]" value="<?php echo $a->jenis_kelamin ?>" class="form-control">
+                    <input type="hidden" name="nama_jabatan[]" value="<?php echo $a->nama_jabatan ?>" class="form-control">
+                    
                     <td><?php echo $no++?>.</td>
                     <td><?php echo $a->nik?></td>
                     <td><?php echo $a->nama_pegawai?></td>
