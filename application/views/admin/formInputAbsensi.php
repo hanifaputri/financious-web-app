@@ -4,52 +4,6 @@
         <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
     </div>
 
-    <div class="card mb-3">
-        <div class="card-header bg-primary text-white">
-            Input Absensi Pegawai
-        </div>
-        <div class="card-body">
-            <form class="form-inline">
-                <div class="form-group mb-2 mr-4">
-                    <label for="staticEmail2" class="mr-4">Bulan</label>
-                    <select class="form-control" name="bulan">
-                        <option>--Pilih Bulan--</option>
-                        <option value="01">Januari</option>
-                        <option value="02">Februari</option>
-                        <option value="03">Maret</option>
-                        <option value="04">April</option>
-                        <option value="05">Mei</option>
-                        <option value="06">Juni</option>
-                        <option value="07">Juli</option>
-                        <option value="08">Agustus</option>
-                        <option value="09">September</option>
-                        <option value="10">Oktober</option>
-                        <option value="11">November</option>
-                        <option value="12">Desember</option>
-                    </select>
-                </div>
-
-                <div class="form-group mb-2 mr-4">
-                    <label for="staticEmail2" class="mr-4">Tahun</label>
-                    <select class="form-control" name="tahun">
-                        <option>--Pilih Tahun--</option>
-                        <?php $tahun = date('Y');
-                        for($i=2020; $i<$tahun+5;$i++) { ?>
-                            <option value="<?php echo $i?>"
-                            <?php /*
-                                if (($_GET['bulan'])=)*/
-                            ?>
-                            ><?php echo $i?></option>
-                            
-                        <?php } ?>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Generate Data</button>
-                
-            </form>
-        </div>
-    </div>
-
     <?php 
         if ((isset($_GET['bulan']) && $_GET['bulan']!='') && 
             (isset($_GET['tahun']) && $_GET['tahun']!='')){
@@ -63,8 +17,76 @@
         }
     ?>
 
+    <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+            Input Absensi Pegawai
+        </div>
+        <div class="card-body">
+            <form class="form-inline">
+                <div class="form-group mb-2 mr-4">
+                    <label for="staticEmail2" class="mr-4">Bulan</label>
+                    <select class="form-control" name="bulan" required>
+                        <option value="">--Pilih Bulan--</option>
+                        
+                        <?php
+                        $opsiBulan = array(
+                            "01" => "Januari",
+                            "02" => "Februari",
+                            "03" => "Maret",
+                            "04" => "April",
+                            "05" => "Mei",
+                            "06" => "Juni",
+                            "07" => "Juli",
+                            "08" => "Agustus",
+                            "09" => "September",
+                            "10" => "Oktober",
+                            "11" => "November",
+                            "12" => "Desember"
+                        );
+
+                        $bulan = $_GET['bulan'];
+                        foreach ($opsiBulan as $index => $namaBulan) {
+                            echo "<option value='$index' ";
+                            if ($bulan == $index) 
+                                echo "selected";
+                            echo ">$namaBulan</option>";
+                        }
+                        ?>
+
+
+                    </select>
+                </div>
+
+                <div class="form-group mb-2 mr-4">
+                    <label for="staticEmail2" class="mr-4">Tahun</label>
+                    <select class="form-control" name="tahun" required>
+                        <option value="">--Pilih Tahun--</option>
+                        <?php 
+                        $tahun = $_GET['tahun'];
+                        $tahunSekarang = date('Y');
+
+                        for ($th = $tahunSekarang; $th < $tahunSekarang + 5; $th++) {
+                            echo "<option value='$th' ";
+                            if ($tahun == $th) 
+                                echo "selected";
+                            echo ">$th</option>";
+                        }
+
+                        ?>
+
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Generate Data</button>
+                
+            </form>
+        </div>
+    </div>
+
     <div class="alert alert-info">
-        Menampilkan data kehadiran pegawai 
+        Menampilkan 
+        <span class="font-weight-bold"><?php echo count($input_absensi)?> </span> 
+        data kehadiran pegawai pada
         bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
         tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
     </div>
