@@ -32,7 +32,7 @@
                                     "12" => "Desember"
                                 );
 
-                                $bulan = $_GET['bulan'];
+                                $bulan = $this->input->get('bulan');
                                 foreach ($opsiBulan as $index => $namaBulan) {
                                     echo "<option value='$index' ";
                                     if ($bulan == $index) 
@@ -48,7 +48,7 @@
                             <select class="form-control" name="tahun" required>
                                 <option value="">--Pilih Tahun--</option>
                                 <?php 
-                                $tahun = $_GET['tahun'];
+                                $tahun = $this->input->get('tahun');
                                 $tahunSekarang = date('Y');
                                 for ($th = $tahunSekarang; $th < $tahunSekarang + 5; $th++) {
                                     echo "<option value='$th' ";
@@ -63,7 +63,7 @@
                 </div>
                 <div class="ml-auto p-2">
                     <button onclick="document.getElementById('filter').submit()" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Generate Data</button>
-                    <button onclick="document.getElementById('data').submit()" class="btn btn-success btn-icon-split mb-2 ml-2"
+                    <button name="submit" value="submit" form="data" onclick="document.getElementById('data').submit()" class="btn btn-success btn-icon-split mb-2 ml-2"
                     <?php if (count($input_absensi)==0) echo'disabled'?>>       
                         <span class="icon text-white">
                         <i class="fas fa-save"></i>
@@ -75,8 +75,7 @@
         </div>
     </div>
     <?php 
-    if (!(isset($_GET['bulan']) && $_GET['bulan']!='') && 
-        !(isset($_GET['tahun']) && $_GET['tahun']!='')){
+    if (!$this->input->get('bulan') && !$this->input->get('bulan')){
         $bulan = date('m');
         $tahun = date('Y');
         $bulantahun = $bulan.$tahun;
@@ -106,10 +105,10 @@
                 <span class="font-weight-bold"><?php echo count($input_absensi)?> </span> 
                 data kehadiran pegawai pada
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
-                tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
+                tahun <span class="font-weight-bold"><?php echo date($tahun) ?></span> 
             </div>
 
-            <form method="POST" id="data">
+            <form method="POST" id="data" name="submit">
                 <table class="table table-bordered table-striped">
                     <tr class="text-center">
                         <td>No.</td>
@@ -135,9 +134,9 @@
                             <td><?php echo $a->nama_pegawai?></td>
                             <td><?php echo $a->jenis_kelamin?></td>
                             <td><?php echo $a->nama_jabatan ?></td>
-                            <td width="8%"><input type="number" min="0" name="hadir[]" value="0" class="form-control"></td>
-                            <td width="8%"><input type="number" min="0" name="sakit[]" value="0" class="form-control"></td>
-                            <td width="8%"><input type="number" min="0" name="alpha[]" value="0" class="form-control"></td>
+                            <td width="8%"><input type="number" min="0" name="hadir[]" class="form-control"></td>
+                            <td width="8%"><input type="number" min="0" name="sakit[]" class="form-control"></td>
+                            <td width="8%"><input type="number" min="0" name="alpha[]" class="form-control"></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

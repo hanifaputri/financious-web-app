@@ -49,7 +49,7 @@
                     <select class="form-control" name="tahun" required>
                         <option value="">--Pilih Tahun--</option>
                         <?php 
-                        $tahun = $_GET['tahun'];
+                        $tahun = $this->input->get('tahun');
                         $tahunSekarang = date('Y');
                         for ($th = $tahunSekarang; $th < $tahunSekarang + 5; $th++) {
                             echo "<option value='$th' ";
