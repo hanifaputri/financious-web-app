@@ -34,14 +34,13 @@ class DataAbsensi extends CI_Controller {
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataAbsensi', $data);
         $this->load->view('templates_admin/footer');
-    
     }
 
     public function inputAbsensi()
     { 
         if ($this->input->post('submit', TRUE) == 'submit'){
             $post = $this->input->post();
-
+            
             foreach ($post['bulan'] as $key => $value) {
                 if($post['bulan'][$key] != '' || $nik['bulan'][$key] != ''){
                     $simpan[] = array(
@@ -56,6 +55,9 @@ class DataAbsensi extends CI_Controller {
                     );
                 }
             }
+            // Fetch data bulan & tahun
+            $bulan = substr(($post['bulan'][0]),0,2);
+            $tahun = substr(($post['bulan'][0]),2,4);
 
             $this->penggajianModel->insert_batch('data_kehadiran', $simpan);
             $this->session->set_flashdata('pesan','
@@ -66,7 +68,7 @@ class DataAbsensi extends CI_Controller {
                 </button>
                 </div>
             ');
-            redirect('admin/dataAbsensi');
+            redirect('admin/dataAbsensi?bulan='.$bulan.'&tahun='.$tahun);
         }
 
         $data['title'] = "Form Input Absensi";

@@ -63,7 +63,7 @@
                 </div>
                 <div class="ml-auto p-2">
                     <button onclick="document.getElementById('filter').submit()" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Generate Data</button>
-                    <button name="submit" value="submit" form="data" onclick="document.getElementById('data').submit()" class="btn btn-success btn-icon-split mb-2 ml-2"
+                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-icon-split mb-2 ml-2" 
                     <?php if (count($input_absensi)==0) echo'disabled'?>>       
                         <span class="icon text-white">
                         <i class="fas fa-save"></i>
@@ -107,8 +107,11 @@
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
                 tahun <span class="font-weight-bold"><?php echo date($tahun) ?></span> 
             </div>
+                <input type="hidden" name="bln" value="<?php echo $bulan?>"/>
+                <input type="hidden" name="thn" value="<?php echo $tahun?>"/>
 
             <form method="POST" id="data" name="submit">
+                
                 <table class="table table-bordered table-striped">
                     <tr class="text-center">
                         <td>No.</td>
@@ -134,9 +137,9 @@
                             <td><?php echo $a->nama_pegawai?></td>
                             <td><?php echo $a->jenis_kelamin?></td>
                             <td><?php echo $a->nama_jabatan ?></td>
-                            <td width="8%"><input type="number" min="0" name="hadir[]" class="form-control"></td>
-                            <td width="8%"><input type="number" min="0" name="sakit[]" class="form-control"></td>
-                            <td width="8%"><input type="number" min="0" name="alpha[]" class="form-control"></td>
+                            <td width="8%"><input type="number" value="0" min="0" name="hadir[]" class="form-control"></td>
+                            <td width="8%"><input type="number" value="0" min="0" name="sakit[]" class="form-control"></td>
+                            <td width="8%"><input type="number" value="0" min="0" name="alpha[]" class="form-control"></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
@@ -145,6 +148,29 @@
         }?>
     <?php
     }?>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                <i class="fas fa-info-circle mr-2"></i>
+                    Konfirmasi
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Data yang sudah diinput tidak dapat diedit kembali. Apakah Anda yakin untuk menyimpan?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" name="submit" value="submit" form="data" onclick="document.getElementById('data').submit()">Simpan</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 </div>

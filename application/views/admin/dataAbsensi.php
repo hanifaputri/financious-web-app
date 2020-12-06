@@ -103,6 +103,15 @@
         $tahun = $_GET['tahun'];
         $bulantahun = $bulan.$tahun;
     ?>
+        <!-- Flash Alert 00 
+        <div class="alert alert-success alert-dismissible fade show">
+            Menampilkan data kehadiran pegawai 
+            bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
+            tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>-->
     <!-- Waktu sudah di set -->
         <?php 
             $isDataExist = count($absensi);
@@ -116,31 +125,32 @@
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
                 tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
             </div>
-
-            <table class="table table-bordered table-striped">
-                <tr class="text-center">
-                    <td>No.</td>
-                    <td>NIK</td>
-                    <td>Nama Pegawai</td>
-                    <td>Jenis Kelamin</td>
-                    <td>Jabatan</td>
-                    <td>Hadir</td>
-                    <td>Sakit</td>
-                    <td>Alpha</td>
-                </tr>
-                <?php $no=1; foreach ($absensi as $a) : ?>
-                    <tr>
-                        <td><?php echo $no++?>.</td>
-                        <td><?php echo $a->nik?></td>
-                        <td><?php echo $a->nama_pegawai?></td>
-                        <td><?php echo $a->jenis_kelamin?></td>
-                        <td><?php echo $a->nama_jabatan ?></td>
-                        <td><?php echo $a->hadir?></td>
-                        <td><?php echo $a->sakit?></td>
-                        <td><?php echo $a->alpha?></td>
+            <div class="table-responsive">
+                <table class="table  table-bordered table-striped">
+                    <tr class="text-center">
+                        <td>No.</td>
+                        <td>NIK</td>
+                        <td>Nama Pegawai</td>
+                        <td>Jenis Kelamin</td>
+                        <td>Jabatan</td>
+                        <td>Hadir</td>
+                        <td>Sakit</td>
+                        <td>Alpha</td>
                     </tr>
-                <?php endforeach; ?>
-            </table>
+                    <?php $no=1; foreach ($absensi as $a) : ?>
+                        <tr>
+                            <td><?php echo $no++?>.</td>
+                            <td><?php echo $a->nik?></td>
+                            <td><?php echo $a->nama_pegawai?></td>
+                            <td><?php echo $a->jenis_kelamin?></td>
+                            <td><?php echo $a->nama_jabatan ?></td>
+                            <td><?php echo $a->hadir?></td>
+                            <td><?php echo $a->sakit?></td>
+                            <td><?php echo $a->alpha?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
         <?php
             }
         ?>
