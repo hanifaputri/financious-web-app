@@ -1,24 +1,29 @@
 <?php
 
 class PenggajianModel extends CI_model {
-    public function get_data($table){
+    public function get_data($table)
+    {
         return $this->db->get($table);
     }
 
-    public function insert_data($table, $data){
+    public function insert_data($table, $data)
+    {
         $this->db->insert($table, $data);
     }
 
-    public function update_data($table, $data, $where){
+    public function update_data($table, $data, $where)
+    {
         $this->db->update($table, $data, $where);
     }
 
-    public function delete_data($table, $where) {
+    public function delete_data($table, $where) 
+    {
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    public function insert_batch($table = null, $data = array()) {
+    public function insert_batch($table = null, $data = array()) 
+    {
         $jumlah = count($data);
         if ($jumlah > 0) {
             $this->db->insert_batch($table, $data);

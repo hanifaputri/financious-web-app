@@ -30,7 +30,7 @@
                             "12" => "Desember"
                         );
 
-                        $bulan = $_GET['bulan'];
+                        $bulan = $this->input->get('bulan');
                         foreach ($opsiBulan as $index => $namaBulan) {
                             echo "<option value='$index' ";
                             if ($bulan == $index) 
@@ -57,7 +57,27 @@
                         ?>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2 ml-auto mr-2"><i class="fas fa-eye mr-3"></i>Tampilkan Data</button>
+
+                <button type="submit" class="btn btn-primary ml-auto mr-3"><i class="fas fa-eye mr-3"></i>Tampilkan Data</button>
+               
+                
+
+                <!-- Cek kondisi database -->
+                <?php if (count($gaji) > 0) { ?>
+                <!-- Database ada -->
+                <a class="btn btn-success btn-icon-split"  href="<?php echo base_url('admin/dataPenggajian/cetakGaji?bulan='.$bulan.'$tahun='.$tahun)?>">
+                <?php
+                } else { ?>
+                <!-- Database tidak ada -->
+                <a class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#exampleModal">
+                <?php
+                }?>
+                    <span class="icon text-white">
+                        <i class="fas fa-print"></i>
+                    </span>
+                    <span class="text">Print Data Gaji</span>
+                </a>
+
             </form>
         </div>
     </div>
@@ -130,6 +150,30 @@
             </div>
         <?php } ?>
     <?php } ?>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+            <i class="fas fa-info-circle mr-2"></i>
+            Informasi
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Data gaji masih kosong, silahkan input absensi terlebih dahulu pada bulan dan tahun yang Anda pilih.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
 </div>
 </div>
 <!-- End of Main Content -->
