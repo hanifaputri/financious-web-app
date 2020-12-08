@@ -14,70 +14,18 @@
                 <div class="sidebar-brand-text mx-3">HANIFUY <sup>TM</sup></div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li  class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('admin/dashboard')?>">
+                <a class="nav-link" href="<?php echo base_url('pegawai/dashboard')?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <!-- Data Start -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Data
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu - Master Data -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-database"></i>
-                    <span>Master Data</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url('admin/dataPegawai')?>">Data Pegawai</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/dataJabatan')?>">Data Jabatan</a>
-                    </div>
-                </div>
+            <li  class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('pegawai/dataGaji')?>">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Data Gaji</span></a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu - Transaksi -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-money-check-alt"></i>
-                    <span>Transaksi</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url('admin/dataAbsensi')?>">Data Absensi</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/potonganGaji')?>">Potongan Gaji</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/dataPenggajian')?>">Data Gaji</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu - Laporan -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-receipt"></i>
-                    <span>Laporan</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url('admin/laporanGaji')?>">Laporan Gaji</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/laporanAbsensi')?>">Laporan Absensi</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/slipGaji')?>">Slip Gaji</a>
-                    </div>
-                </div>
-            </li>
-            
             <!-- User Start -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
@@ -101,13 +49,6 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card">
-                <img class="sidebar-card-illustration mb-2" src="<?php echo base_url() ?>assets/img/undraw_rocket.svg" alt="">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
 
         </ul>

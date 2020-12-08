@@ -1,6 +1,21 @@
 <?php
 
 class dataPegawai extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        if ($this->session->userdata('hak_akses')!='1'){
+            $this->session->set_flashdata('pesan','
+                <div class="alert alert-danger" role="alert">
+                <span>Anda belum login!</span> 
+                </div>
+            ');
+            redirect('welcome');
+        }
+    }
+    
     public function index()
     {
         $data['title'] = "Data Pegawai";
@@ -42,6 +57,10 @@ class dataPegawai extends CI_Controller {
             $jenis_kelamin = $this->input->post('jenis_kelamin');
             $tanggal_masuk = $this->input->post('tanggal_masuk');
             $jabatan = $this->input->post('jabatan');
+            $hak_akses = $this->input->post('hak_akses');
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
+
             $status = $this->input->post('status');
             //Upload foto 
             $photo = $_FILES['photo']['name'];
@@ -64,6 +83,9 @@ class dataPegawai extends CI_Controller {
                 'tanggal_masuk' => $tanggal_masuk,
                 'jabatan' => $jabatan,
                 'status' => $status,
+                'hak_akses' => $hak_akses,
+                'username' => $username,
+                'password' => $password,
                 'photo' => $photo
             );
             
@@ -112,6 +134,9 @@ class dataPegawai extends CI_Controller {
             $tanggal_masuk = $this->input->post('tanggal_masuk');
             $jabatan = $this->input->post('jabatan');
             $status = $this->input->post('status');
+            $hak_akses = $this->input->post('hak_akses');
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
             
             //Upload foto 
             $photo = $_FILES['photo']['name'];
@@ -133,6 +158,9 @@ class dataPegawai extends CI_Controller {
                 'jenis_kelamin' => $jenis_kelamin,
                 'tanggal_masuk' => $tanggal_masuk,
                 'jabatan' => $jabatan,
+                'hak_akses' => $hak_akses,
+                'username' => $username,
+                'password' => $password,
                 'status' => $status
             );
             $where = array('id_pegawai' => $id);

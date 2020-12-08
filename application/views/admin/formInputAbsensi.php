@@ -75,7 +75,8 @@
         </div>
     </div>
     <?php 
-    if (!$this->input->get('bulan') && !$this->input->get('bulan')){
+    if (!$this->input->get('bulan') || !$this->input->get('tahun') ||
+        $this->input->get('bulan')=='' || $this->input->get('tahun')==''){
         $bulan = date('m');
         $tahun = date('Y');
         $bulantahun = $bulan.$tahun;
@@ -107,8 +108,6 @@
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
                 tahun <span class="font-weight-bold"><?php echo date($tahun) ?></span> 
             </div>
-                <input type="hidden" name="bln" value="<?php echo $bulan?>"/>
-                <input type="hidden" name="thn" value="<?php echo $tahun?>"/>
 
             <form method="POST" id="data" name="submit">
                 

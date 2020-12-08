@@ -2,7 +2,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
     </div>
-    <div class="ml-auto p-2">Flex item</div>
+    <div class="ml-auto p-2"></div>
 
     <div class="card">
         <div class="card-body">
@@ -19,6 +19,16 @@
                     <label>Nama Pegawai</label>
                     <input type="text" name="nama_pegawai" class="form-control"  value="<?php echo $p->nama_pegawai ?>"/>
                     <?php echo form_error('nama_pegawai', '<div class="text-small text-danger"></div>') ?>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control"  value="<?php echo $p->username ?>"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control"  value=""/>
                 </div>
 
                 <div class="form-group">
@@ -61,6 +71,15 @@
                 <div class="form-group">
                     <label>Upload Foto</label>
                     <input type="file" name="photo" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Hak Akses</label>
+                    <select name="hak_akses" class="form-control">
+                        <option value="">--Pilih Hak Akses--</option>
+                        <option value="1" <?php if($p->hak_akses == '1') echo 'selected'?>>Admin</option>
+                        <option value="2" <?php if($p->hak_akses == '2') echo 'selected'?>>Pegawai</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Simpan</button>

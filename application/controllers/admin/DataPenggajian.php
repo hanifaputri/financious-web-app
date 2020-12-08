@@ -1,6 +1,21 @@
 <?php
 
 class DataPenggajian extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        if ($this->session->userdata('hak_akses')!='1'){
+            $this->session->set_flashdata('pesan','
+                <div class="alert alert-danger" role="alert">
+                <span>Anda belum login!</span> 
+                </div>
+            ');
+            redirect('welcome');
+        }
+    }
+    
     public function index()
     {
         $data['title'] = "Data Penggajian";
