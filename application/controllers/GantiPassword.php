@@ -2,14 +2,36 @@
 
 class GantiPassword extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        if ($this->session->userdata('hak_akses')!='2'){
+            $this->session->set_flashdata('pesan','
+                <div class="alert alert-danger" role="alert">
+                <span>Anda belum login!</span> 
+                </div>
+            ');
+            redirect('welcome');
+        }
+    }
+
     public function index()
     {
         $data['title'] = "Ganti Password";
 
-        $this->load->view('templates_admin/header', $data);
-        $this->load->view('templates_admin/sidebar');
-        $this->load->view('formGantiPassword', $data);
-        $this->load->view('templates_admin/footer');
+        if ($this->session->userdata('hak_akses')=='1'){
+            $this->load->view('templates_admin/header', $data);
+            $this->load->view('templates_admin/sidebar');
+            $this->load->view('formGantiPassword', $data);
+            $this->load->view('templates_admin/footer');
+        } else {
+            $this->load->view('templates_pegawai/header', $data);
+            $this->load->view('templates_pegawai/sidebar');
+            $this->load->view('formGantiPassword', $data);
+            $this->load->view('templates_pegawai/footer');
+        }
+
     }
 
     public function gantiPasswordAksi()
