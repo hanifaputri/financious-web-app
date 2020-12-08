@@ -29,20 +29,10 @@ class LaporanGaji extends CI_Controller {
     public function cetakLaporanGaji() 
     {
         $data['title'] = "Cetak Laporan Gaji Pegawai";
-        
-        // Filter Waktu
-        if ((isset($_GET['bulan']) && $_GET['bulan']!='') && 
-            (isset($_GET['tahun']) && $_GET['tahun']!='')){
-            $bulan = $_GET['bulan'];
-            $tahun = $_GET['tahun'];
-            $bulantahun = $bulan.$tahun;
-        } else {
-            $bulan = date('m');
-            $tahun = date('Y');
-            $bulantahun = $bulan.$tahun;
-        }
-        $data['bulan'] = $bulan;
-        $data['tahun'] = $tahun;
+        $data['bulan'] = $this->input->post('bulan');
+        $data['tahun'] = $this->input->post('tahun');
+        $bulantahun = $data['bulan'].$data['tahun'];
+
         $data['potongan_alpha'] = $this->db->query("SELECT jml_potongan FROM potongan_gaji WHERE potongan = 'Alpha'")->row();
         $data['cetakGaji'] = $this->db->query("
         SELECT
@@ -53,15 +43,28 @@ class LaporanGaji extends CI_Controller {
             data_jabatan.gaji_pokok,
             data_jabatan.tj_transport,
             data_jabatan.uang_makan,
+            data_kehadiran.bulan,
             data_kehadiran.alpha
         FROM data_pegawai
         INNER JOIN data_kehadiran ON data_kehadiran.nik = data_pegawai.nik
         INNER JOIN data_jabatan ON data_jabatan.nama_jabatan = data_pegawai.jabatan
         WHERE data_kehadiran.bulan='$bulantahun'
         ORDER BY data_pegawai.nama_pegawai ASC
-        ")->result();     
+        ")->result();
 
-        $this->load->view('templates_admin/header', $data);
-        $this->load->view('admin/cetakDataGaji', $data);
+        if (count($data['cetakGaji'])>0){
+            $this->load->view('templates_admin/header', $data);
+            $this->load->view('admin/cetakDataGaji', $data);
+        } else {
+            $this->session->set_flashdata('pesan','
+                <div class="alert alert-danger" role="alert">
+                <strong>Data Tidak Ditemukan</strong> 
+                <hr>
+                <p>Mohon maaf data pada bulan dan tahun yang Anda pilih belum tersedia. Silahkan input absensi terlebih dahulu.</p>
+                </div>
+            ');
+            redirect('admin/laporanGaji');
+        }
+
     }
 }

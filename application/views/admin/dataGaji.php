@@ -65,7 +65,7 @@
                 <!-- Cek kondisi database -->
                 <?php if (count($gaji) > 0) { ?>
                 <!-- Database ada -->
-                <a class="btn btn-success btn-icon-split"  href="<?php echo base_url('admin/dataPenggajian/cetakGaji?bulan='.$bulan.'$tahun='.$tahun)?>">
+                <a class="btn btn-success btn-icon-split"  href="<?php echo base_url('admin/dataPenggajian/cetakGaji?bulan='.$bulan.'&tahun='.$tahun)?>">
                 <?php
                 } else { ?>
                 <!-- Database tidak ada -->
@@ -81,6 +81,7 @@
             </form>
         </div>
     </div>
+
     <!-- Cek parameter tahun & bulan -->
     <?php 
     if (!(isset($_GET['bulan']) && $_GET['bulan']!='') && 
@@ -111,11 +112,12 @@
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
                 tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
             </div>
-            
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+    
+            <div class="table-responsive p-2">
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
                     <tr class="text-center">
-                        <th>NO</th>
+                        <th>No.</th>
                         <th>Nama Pegawai</th>
                         <th>Jenis Kelamin</th>
                         <th>Jabatan</th>
@@ -125,6 +127,7 @@
                         <th>Potongan</th>
                         <th>Total Gaji</th>
                     </tr>
+                    </thead>
                     <!-- Table Content -->
                     <?php 
                     $alpha = $potongan_alpha->jml_potongan;
@@ -150,6 +153,7 @@
             </div>
         <?php } ?>
     <?php } ?>
+    </table>
     
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

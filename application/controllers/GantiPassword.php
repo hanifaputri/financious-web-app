@@ -6,7 +6,7 @@ class GantiPassword extends CI_Controller {
     {
         parent::__construct();
 
-        if ($this->session->userdata('hak_akses')!='2'){
+        if (!$this->session->has_userdata('hak_akses')){
             $this->session->set_flashdata('pesan','
                 <div class="alert alert-danger" role="alert">
                 <span>Anda belum login!</span> 

@@ -133,6 +133,11 @@ class dataJabatan extends CI_Controller {
         }
     }
 
+    /*
+    | -------------------------------------------------------------------
+    |  Form Validation Rules
+    | -------------------------------------------------------------------
+    */
     public function _rules()
     {
         $this->form_validation->set_rules('nama_jabatan', 'nama jabatan', 'required');

@@ -56,6 +56,15 @@
     <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
 
+    <!-- Data Table plugins -->
+    <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+    </script>
 </body>
 
 </html>

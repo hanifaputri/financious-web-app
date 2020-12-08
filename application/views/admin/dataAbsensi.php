@@ -11,6 +11,7 @@
         <div class="card-header bg-primary text-white">
             Filter Data Absensi Pegawai
         </div>
+        
         <div class="card-body">
             <form class="form-inline">
                 <div class="form-group mb-2 mr-4">
@@ -125,18 +126,21 @@
                 bulan <span class="font-weight-bold"><?php echo $bulan ?></span> 
                 tahun <span class="font-weight-bold"><?php echo $tahun ?></span> 
             </div>
-            <div class="table-responsive">
-                <table class="table  table-bordered table-striped">
-                    <tr class="text-center">
-                        <td>No.</td>
-                        <td>NIK</td>
-                        <td>Nama Pegawai</td>
-                        <td>Jenis Kelamin</td>
-                        <td>Jabatan</td>
-                        <td>Hadir</td>
-                        <td>Sakit</td>
-                        <td>Alpha</td>
-                    </tr>
+            <div class="table-responsive p-2 mb-4">
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>NIK</th>
+                            <th>Nama Pegawai</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Jabatan</th>
+                            <th>Hadir</th>
+                            <th>Sakit</th>
+                            <th>Alpha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php $no=1; foreach ($absensi as $a) : ?>
                         <tr>
                             <td><?php echo $no++?>.</td>
@@ -149,6 +153,7 @@
                             <td><?php echo $a->alpha?></td>
                         </tr>
                     <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         <?php

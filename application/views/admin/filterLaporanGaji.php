@@ -5,6 +5,7 @@
             Filter Laporan Gaji Pegawai
         </div>
         <div class="card-body">
+        <?php echo $this->session->flashdata('pesan')?>
         <form method="POST" action="<?php echo base_url('admin/laporanGaji/cetakLaporanGaji')?>">
             <div class="form-group row mb-4">
                 <label for="inputPassword" class="col-sm-4 col-form-label">Bulan</label>
@@ -27,12 +28,8 @@
                             "12" => "Desember"
                         );
                         
-                        $bulan = $this->input->get('bulan');
                         foreach ($opsiBulan as $index => $namaBulan) {
-                            echo "<option value='$index' ";
-                            if ($bulan == $index) 
-                            echo "selected";
-                            echo ">$namaBulan</option>";
+                            echo "<option value='$index'>$namaBulan</option>";
                         }
                         ?>
                     </select>
@@ -45,13 +42,9 @@
                     <select class="form-control" name="tahun" required>
                         <option value="">--Pilih Tahun--</option>
                         <?php 
-                        $tahun = $this->input->get('tahun');
                         $tahunSekarang = date('Y');
                         for ($th = $tahunSekarang; $th < $tahunSekarang + 5; $th++) {
-                            echo "<option value='$th' ";
-                            if ($tahun == $th) 
-                            echo "selected";
-                            echo ">$th</option>";
+                            echo "<option value='$th'>$th</option>";
                         }
                         ?>
                     </select>
