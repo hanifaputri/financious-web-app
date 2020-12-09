@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller {
         $data['title'] = "Dashboard ASD";
         
         $pegawai = $this->db->query("SELECT * FROM data_pegawai");
-        $admin = $this->db->query("SELECT * FROM data_pegawai WHERE jabatan = 'Asdmin'");
+        $admin = $this->db->query("SELECT * FROM data_pegawai WHERE jabatan = 'Admin'");
         $jabatan = $this->db->query("SELECT * FROM data_jabatan");
         $kehadiran = $this->db->query("SELECT * FROM data_kehadiran");
        
@@ -31,6 +31,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/dashboard', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 }

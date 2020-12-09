@@ -52,10 +52,6 @@
     <!-- Page level plugins -->
     <script src="<?php echo base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
-
     <!-- Data Table plugins -->
     <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/dataTables.bootstrap4.min.js"></script>
@@ -63,6 +59,19 @@
     <script>
     $(document).ready(function() {
         $('#dataTable').DataTable();
+        
+        $("#password span").on('click', function(event) {
+        event.preventDefault();
+        if($('#password input').attr("type") == "text"){
+            $('#password input').attr('type', 'password');
+            $('#password i').addClass( "fa-eye-slash" );
+            $('#password i').removeClass( "fa-eye" );
+        }else if($('#password input').attr("type") == "password"){
+            $('#password input').attr('type', 'text');
+            $('#password i').removeClass( "fa-eye-slash" );
+            $('#password i').addClass( "fa-eye" );
+        }
+        });
     });
     </script>
 </body>

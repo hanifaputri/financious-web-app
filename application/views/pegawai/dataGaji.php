@@ -5,7 +5,8 @@
     </div>
 
     <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+    <table id="dataTable" class="table table-striped table-bordered">
+        <thead>
         <tr>
             <th>Bulan/tahun</th>
             <th>Gaji Pokok</th>
@@ -15,6 +16,7 @@
             <th>Total Gaji</th>
             <th>Cetak Slip</th>
         </tr>
+        </thead>
         <?php 
         $alpha = $potongan_alpha->jml_potongan;
         foreach($gaji as $g) {

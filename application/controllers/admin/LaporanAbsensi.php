@@ -23,7 +23,7 @@ class LaporanAbsensi extends CI_Controller{
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/filterLaporanAbsensi', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 
     public function cetakLaporanAbsensi()

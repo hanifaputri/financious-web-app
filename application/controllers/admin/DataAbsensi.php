@@ -1,36 +1,23 @@
 <?php
 
 class DataAbsensi extends CI_Controller {
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        if ($this->session->userdata('hak_akses')!='1'){
-            $this->session->set_flashdata('pesan','
-                <div class="alert alert-danger" role="alert">
-                <span>Anda belum login!</span> 
-                </div>
-            ');
-            redirect('welcome');
-        }
-    }
+    
     public function index()
     {
         $data['title'] = "Data Absensi Pegawai";
 
         // Filter Absensi
-        if ((isset($_GET['bulan']) && $_GET['bulan']!='') && 
-            (isset($_GET['tahun']) && $_GET['tahun']!='')){
-            $bulan = $_GET['bulan'];
-            $tahun = $_GET['tahun'];
+        if (isset($_GET['bulan']) && isset($_GET['tahun'])){
+            $bulan = $this->input->get('bulan');
+            $tahun = $this->input->get('tahun');
+
             $bulantahun = $bulan.$tahun;
         } else {
-            $bulan = date('m');
-            $tahun = date('Y');
-            $bulantahun = $bulan.$tahun;
+            $currMonth = date('m');
+            $currYear = date('Y');
+            redirect("admin/dataAbsensi?bulan=$currMonth&tahun=$currYear");
         }
-        
+
         $data['jumlah_pegawai'] = $this->db->query("SELECT * FROM data_pegawai")->result();
         $data['absensi'] = $this->db->query("
             SELECT data_kehadiran.*,
@@ -47,7 +34,7 @@ class DataAbsensi extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataAbsensi', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 
     public function inputAbsensi()
@@ -116,6 +103,6 @@ class DataAbsensi extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/formInputAbsensi', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 }

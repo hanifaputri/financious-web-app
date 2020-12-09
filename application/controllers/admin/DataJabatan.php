@@ -25,7 +25,7 @@ class dataJabatan extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataJabatan', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     
     }
   
@@ -40,7 +40,7 @@ class dataJabatan extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/tambahDataJabatan', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 
     public function tambahDataAksi()
@@ -91,7 +91,7 @@ class dataJabatan extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/updateDataJabatan', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 
     public function updateDataAksi()

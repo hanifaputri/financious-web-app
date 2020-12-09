@@ -24,7 +24,7 @@ class PotonganGaji extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/potonganGaji', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
     
     public function tambahData()
@@ -34,7 +34,7 @@ class PotonganGaji extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/tambahPotonganGaji', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
     
     public function tambahDataAksi()
@@ -69,7 +69,7 @@ class PotonganGaji extends CI_Controller {
         $this->load->view('templates_admin/header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/updatePotonganGaji', $data);
-        $this->load->view('templates_admin/footer');
+        $this->load->view('footer');
     }
 
     public function updateDataAksi()

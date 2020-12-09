@@ -24,6 +24,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('templates_pegawai/header', $data);
         $this->load->view('templates_pegawai/sidebar');
         $this->load->view('pegawai/dashboard', $data);
-        $this->load->view('templates_pegawai/footer');
+        $this->load->view('footer');
     }
 }

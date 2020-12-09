@@ -24,12 +24,12 @@ class GantiPassword extends CI_Controller {
             $this->load->view('templates_admin/header', $data);
             $this->load->view('templates_admin/sidebar');
             $this->load->view('formGantiPassword', $data);
-            $this->load->view('templates_admin/footer');
+            $this->load->view('footer');
         } else {
             $this->load->view('templates_pegawai/header', $data);
             $this->load->view('templates_pegawai/sidebar');
             $this->load->view('formGantiPassword', $data);
-            $this->load->view('templates_pegawai/footer');
+            $this->load->view('footer');
         }
 
     }
@@ -48,7 +48,7 @@ class GantiPassword extends CI_Controller {
             $this->load->view('templates_admin/header', $data);
             $this->load->view('templates_admin/sidebar');
             $this->load->view('formGantiPassword', $data);
-            $this->load->view('templates_admin/footer');
+            $this->load->view('footer');
         } else {
             $data = array('password' => md5($passBaru));
             $id = array('id_pegawai' => $this->session->userdata('id_pegawai'));
