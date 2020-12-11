@@ -21,7 +21,7 @@ class PotonganGaji extends CI_Controller {
         $data['title'] = "Setting Potongan Gaji";
         $data['pot_gaji'] = $this->penggajianModel->get_data('potongan_gaji')->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/potonganGaji', $data);
         $this->load->view('footer');
@@ -31,7 +31,7 @@ class PotonganGaji extends CI_Controller {
     {
         $data['title'] = "Tambah Potongan Gaji";
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/tambahPotonganGaji', $data);
         $this->load->view('footer');
@@ -66,7 +66,7 @@ class PotonganGaji extends CI_Controller {
         $data['potongan'] = $this->db->query("SELECT * FROM potongan_gaji WHERE id = '$id'")->result();
         $data['title'] = "Update Potongan Gaji";
         
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/updatePotonganGaji', $data);
         $this->load->view('footer');

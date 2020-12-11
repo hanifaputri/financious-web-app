@@ -21,7 +21,7 @@
     <!-- Tabel -->
     <div class="table-responsive p-2 mb-4">
         <table id="dataTable" class="table table-bordered table-striped mt-2">
-            <thead class="thead-dark text-center">
+            <thead class="text-center">
                 <tr>
                     <th class="align-middle">No</th>
                     <th class="align-middle">NIK</th>

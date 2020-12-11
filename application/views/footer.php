@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Hanifuy! 2020</span>
+                        <span>Copyright &copy; Financious 2020.<br/>Alizza Iman Raddin - Ghina Zahirah - Hanifa Putri Rahima.</span>
                     </div>
                 </div>
             </footer>

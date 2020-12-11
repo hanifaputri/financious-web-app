@@ -21,7 +21,7 @@ class SlipGaji extends CI_Controller {
         $data['title'] = "Cetak Slip Gaji Pegawai";
         $data['pegawai'] = $this->penggajianModel->get_data('data_pegawai')->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/filterSlipGaji', $data);
         $this->load->view('footer');
@@ -52,7 +52,7 @@ class SlipGaji extends CI_Controller {
         ")->result();
 
         if (count($data['print_slip']) > 0) {
-            $this->load->view('templates_admin/header', $data);
+            $this->load->view('header', $data);
             $this->load->view('admin/cetakSlipGaji', $data);
         } else {
             $session = array(

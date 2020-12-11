@@ -20,17 +20,18 @@ class DataPenggajian extends CI_Controller {
     {
         $data['title'] = "Data Penggajian";
         
-        // Filter Waktu
-        if ((isset($_GET['bulan']) && $_GET['bulan']!='') && 
-            (isset($_GET['tahun']) && $_GET['tahun']!='')){
-            $bulan = $_GET['bulan'];
-            $tahun = $_GET['tahun'];
+        // Filter Absensi
+        if (isset($_GET['bulan']) && isset($_GET['tahun'])){
+            $bulan = $this->input->get('bulan');
+            $tahun = $this->input->get('tahun');
+
             $bulantahun = $bulan.$tahun;
         } else {
-            $bulan = date('m');
-            $tahun = date('Y');
-            $bulantahun = $bulan.$tahun;
+            $currMonth = date('m');
+            $currYear = date('Y');
+            redirect("admin/dataPenggajian?bulan=$currMonth&tahun=$currYear");
         }
+
         $data['potongan_alpha'] = $this->db->query("SELECT jml_potongan FROM potongan_gaji WHERE potongan = 'Alpha'")->row();
         $data['gaji'] = $this->db->query("
         SELECT
@@ -49,7 +50,7 @@ class DataPenggajian extends CI_Controller {
         ORDER BY data_pegawai.nama_pegawai ASC
         ")->result();     
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataGaji', $data);
         $this->load->view('footer');
@@ -90,7 +91,7 @@ class DataPenggajian extends CI_Controller {
         ORDER BY data_pegawai.nama_pegawai ASC
         ")->result();     
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('admin/cetakDataGaji', $data);
     }
 

@@ -46,4 +46,14 @@ class PenggajianModel extends CI_model {
             return false;
         }
     }
+
+    public function cek_password($id, $passLama)
+    {
+       $password = $this->db->select('password')->where('id_pegawai', $id)->limit(1)->get('data_pegawai')->row();
+       if ($password->password == md5($passLama)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -21,7 +21,7 @@ class dataPegawai extends CI_Controller {
         $data['title'] = "Data Pegawai";
         $data['pegawai'] = $this->penggajianModel->get_data('data_pegawai')->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataPegawai', $data);
         $this->load->view('footer');
@@ -38,7 +38,7 @@ class dataPegawai extends CI_Controller {
         $data['title'] = "Tambah Data Pegawai";
         $data['array_jabatan'] = $this->penggajianModel->get_data('data_jabatan')->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/formTambahPegawai', $data);
         $this->load->view('footer');
@@ -114,7 +114,7 @@ class dataPegawai extends CI_Controller {
         $data['array_jabatan'] = $this->penggajianModel->get_data('data_jabatan')->result();
         $data['pegawai'] = $this->db->query("SELECT * FROM data_pegawai WHERE id_pegawai = '$id'")->result();
         
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/formUpdatePegawai', $data);
         $this->load->view('footer');

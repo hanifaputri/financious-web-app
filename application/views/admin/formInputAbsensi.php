@@ -111,17 +111,19 @@
 
             <form method="POST" id="data" name="submit">
                 
-                <table class="table table-bordered table-striped">
-                    <tr class="text-center">
-                        <td>No.</td>
-                        <td>NIK</td>
-                        <td>Nama Pegawai</td>
-                        <td>Jenis Kelamin</td>
-                        <td>Jabatan</td>
-                        <td>Hadir</td>
-                        <td>Sakit</td>
-                        <td>Alpha</td>
-                    </tr>
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No.</th>
+                            <th>NIK</th>
+                            <th>Nama Pegawai</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Jabatan</th>
+                            <th>Hadir</th>
+                            <th>Sakit</th>
+                            <th>Alpha</th>
+                        </tr>
+                    </thead>
                     <?php $no=1; foreach ($input_absensi as $a) : ?>
                         <tr>
                             <!-- Hidden field -->

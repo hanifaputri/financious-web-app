@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
-    <div class="card mx-auto my-auto" style="max-width:500px;">
+    <div class="card mx-auto mb-4" style="max-width:500px;">
         <div class="card-header bg-primary text-white text-center">
-            Cetak Laporan Absensi Pegawai
+            Filter Laporan Absensi Pegawai
         </div>
         <div class="card-body">
 

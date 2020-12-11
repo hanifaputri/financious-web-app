@@ -22,36 +22,45 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gray-200">
 
-    <div class="container">
+    <div class="d-flex flex-column align-items-center ">
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-5 col-lg-6 col-md-7">
-
+        <div class="row ">
+            <div class="mt-5">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"><?php echo $title ?></h1>
+                                    <div class="row mb-4">
+                                        <div class="col-xs-4 mr-4">
+                                            <span><img style="height:100px;" class="mr-2" src="<?php echo base_url('assets/img/favicon.png')?>"/></span>
+                                        </div>
+                                        <div class="col-xs-8 align-self-center">
+                                            <h1 class="h4 text-gray-900 mb-2"><?php echo $title ?></h1>
+                                            <span class="font-weight-bold">SM Entertainment Company</span>
+                                        </div>
                                     </div>
+                                    
+                                    <hr class="mb-4">
+
+                                    <!-- Error Message -->
                                     <?php echo $this->session->flashdata('pesan') ?>
                                     <form method="POST" class="user">
                                         <div class="form-group">
                                             <input name="username" type="text" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Username">
-                                            <?php echo form_error('username', '<div class="text-small text-danger"></div>') ?>
+                                            <?php echo form_error('username','<small class="text-danger">','</small>'); ?>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <input name="password" type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
-                                            <?php echo form_error('password', '<div class="text-small text-danger"></div>') ?>
+                                            <?php echo form_error('password','<small class="text-danger">','</small>'); ?>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -70,10 +79,18 @@
                     </div>
                 </div>
 
+                <div class="d-flex flex-column align-items-center justify-content-center" href="<?php echo base_url('pegawai/dashboard')?>">
+                    <small class="text-center">Powered by</small>
+                    <h3 class="sidebar-brand-text mx-3 text-secondary font-weight-bold">
+                    <i class="fas fa-piggy-bank mr-3"></i>
+                    Financious
+                    </h3>
+                    <div class="copyright text-center my-auto">
+                        <small>Alizza Iman Raddin - Ghina Zahirah - Hanifa Putri Rahima.</small>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->

@@ -22,7 +22,7 @@ class dataJabatan extends CI_Controller {
         $data['jabatan'] = $this->penggajianModel->get_data('data_jabatan')
             ->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataJabatan', $data);
         $this->load->view('footer');
@@ -37,7 +37,7 @@ class dataJabatan extends CI_Controller {
     public function tambahData()
     {
         $data['title'] = "Tambah Data Jabatan";
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/tambahDataJabatan', $data);
         $this->load->view('footer');
@@ -86,9 +86,9 @@ class dataJabatan extends CI_Controller {
     {
         $where = array('id_jabatan' => $id);
         $data['jabatan'] = $this->db->query("SELECT * FROM data_jabatan WHERE id_jabatan = '$id'")->result();
-        $data['title'] = "Tambah Data Jabatan";
+        $data['title'] = "Edit Data Jabatan";
         
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/updateDataJabatan', $data);
         $this->load->view('footer');

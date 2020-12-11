@@ -6,7 +6,7 @@
         <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
     </div>
 
-    <div class="card">
+    <div class="card col-lg-6">
         <div class="card-body">
             <?php foreach ($jabatan as $j) : ?>
             <form method="post" action="<?php echo base_url('admin/dataJabatan/updateDataAksi')?>">
@@ -19,19 +19,34 @@
 
                 <div class="form-group">
                     <label>Gaji Pokok</label>
-                    <input type="text" name="gaji_pokok" class="form-control" value="<?php echo $j->gaji_pokok ?>"/>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Rp.</span>
+                        </div>
+                        <input type="text" name="gaji_pokok" class="form-control" value="<?php echo $j->gaji_pokok ?>"/>
+                    </div>
                     <?php echo form_error('gaji_pokok', '<div class="text-small text-danger"></div>') ?>
                 </div>
 
                 <div class="form-group">
                     <label>Tunjangan Transport</label>
-                    <input type="text" name="tj_transport" class="form-control" value="<?php echo $j->tj_transport ?>"/>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Rp.</span>
+                        </div>
+                        <input type="text" name="tj_transport" class="form-control" value="<?php echo $j->tj_transport ?>"/>
+                    </div>
                     <?php echo form_error('tj_transport', '<div class="text-small text-danger"></div>') ?>
                 </div>
 
                 <div class="form-group">
                     <label>Uang Makan</label>
-                    <input type="text" name="uang_makan" class="form-control" value="<?php echo $j->uang_makan ?>"/>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Rp.</span>
+                        </div>
+                        <input type="text" name="uang_makan" class="form-control" value="<?php echo $j->uang_makan ?>"/>
+                    </div>
                     <?php echo form_error('uang_makan', '<div class="text-small text-danger"></div>') ?>
                 </div>
 

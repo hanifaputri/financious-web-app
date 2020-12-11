@@ -14,7 +14,7 @@
     </a>
 
     <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+        <thead>
             <tr class="text-center">
                 <th>No.</th>
                 <th>Jenis Potongan</th>

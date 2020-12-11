@@ -29,6 +29,8 @@ class DataGaji extends CI_Controller {
             data_jabatan.tj_transport,
             data_jabatan.uang_makan,
             data_kehadiran.alpha,
+            data_kehadiran.hadir,
+            data_kehadiran.sakit,
             data_kehadiran.bulan,
             data_kehadiran.id_kehadiran
         FROM data_pegawai
@@ -38,7 +40,7 @@ class DataGaji extends CI_Controller {
         ORDER BY data_kehadiran.bulan DESC
         ")->result();
 
-        $this->load->view('templates_pegawai/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_pegawai/sidebar');
         $this->load->view('pegawai/dataGaji', $data);
         $this->load->view('footer');
@@ -64,7 +66,7 @@ class DataGaji extends CI_Controller {
         WHERE data_kehadiran.id_kehadiran = '$id' 
         ")->result();
 
-        $this->load->view('templates_pegawai/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('pegawai/cetakSlipGaji', $data);
     }
 }

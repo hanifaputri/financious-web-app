@@ -20,7 +20,7 @@ class LaporanAbsensi extends CI_Controller{
     {
         $data['title'] = "Laporan Absensi";
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/filterLaporanAbsensi', $data);
         $this->load->view('footer');
@@ -42,7 +42,7 @@ class LaporanAbsensi extends CI_Controller{
         ")->result();
 
         if (count($data['lap_kehadiran']) > 0) {
-            $this->load->view('templates_admin/header', $data);
+            $this->load->view('header', $data);
             $this->load->view('admin/cetakLaporanAbsensi', $data);
         } else {
             $this->session->set_flashdata('pesan','

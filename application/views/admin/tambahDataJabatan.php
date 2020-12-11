@@ -6,7 +6,7 @@
         <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
     </div>
 
-    <div class="card" style="max-width:500px;">
+    <div class="card col-lg-6">
         <form method="post" action="<?php echo base_url('admin/dataJabatan/tambahDataAksi')?>">
             <div class="card-body">
                 <div class="form-group">

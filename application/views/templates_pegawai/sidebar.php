@@ -7,12 +7,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fab fa-hire-a-helper"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">HANIFUY <sup>TM</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('pegawai/dashboard')?>">
+            <div class="sidebar-brand-text mx-3">Financious</div>
             </a>
+
+            <hr class="sidebar-divider">
 
             <!-- Nav Item - Dashboard -->
             <li  class="nav-item">
@@ -20,6 +19,7 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
+            
             <li  class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('pegawai/dataGaji')?>">
                     <i class="fas fa-money-check-alt"></i>
@@ -71,7 +71,7 @@
                     <!-- Header Topbar
                     <li style="list-style-type:none;" class="nav-item no-arrow">
                         BEM FILKOM
-                    </li> -->
+                    </li> 
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -81,7 +81,12 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
+
+                    <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100">
+                        <span><img style="height:50px;" class="mr-2" src="<?php echo base_url('assets/img/favicon.png')?>"/></span>
+                        <span class="font-weight-bold">SM Entertainment Company</span>
+                    </div>
 
                     <!-- Topbar Search 
                     <form
@@ -131,8 +136,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama_pegawai')?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?php echo base_url('assets/photo/').$this->session->userdata('photo') ?>">
+                                <img class="img-profile rounded-circle" src="<?php echo base_url('assets/photo/').$this->session->userdata('photo') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

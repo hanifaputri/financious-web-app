@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="title mb-5">
-        <h1 class="font-weight-bold">PT. Tiga Babi Maju Jaya</h1>
+        <h1 class="font-weight-bold">SM Entertainment</h1>
         <h2>Slip Gaji Pegawai</h2>
     </div>
 

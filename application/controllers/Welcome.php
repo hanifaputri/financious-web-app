@@ -2,14 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
+	
 	public function index()
 	{
-		$this->_rules();
+		$this->_cekLogin();
+	}
 
+	public function login()
+	{
+		$this->_rules();
+		
 		if ($this->form_validation->run() == FALSE){
 			$data['title'] = "Login";
-			$this->load->view('templates_admin/header', $data);
+			$this->load->view('header', $data);
 			$this->load->view('formLogin');
 		} else {
 			$username = $this->input->post('username');
@@ -29,7 +34,7 @@ class Welcome extends CI_Controller {
 					'hak_akses'		=> $cek->hak_akses,
 					'nama_pegawai'	=> $cek->nama_pegawai,
 					'id_pegawai'	=> $cek->id_pegawai,
-					'nik'	=> $cek->nik,
+					'nik'			=> $cek->nik,
 					'photo'			=> $cek->photo
 				);
 				$this->session->set_userdata($session_data);
@@ -53,7 +58,20 @@ class Welcome extends CI_Controller {
 		$this->form_validation->set_rules('username', 'username','required');
 		$this->form_validation->set_rules('password', 'password','required');
 	}
-
+	
+	public function _cekLogin()
+	{
+        if ($this->session->has_userdata('hak_akses')){
+			switch ($this->session->userdata('hak_akses')) {
+				case 1: redirect('admin/dashboard');
+			break;
+				case 2: redirect('pegawai/dashboard');
+			break;
+			}
+        } else {
+			$this->login();
+		}
+	}
 	public function logout()
 	{
 		$this->session->sess_destroy();

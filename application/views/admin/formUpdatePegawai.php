@@ -14,20 +14,9 @@
                 <form id="form-data-pegawai" method="POST" enctype="multipart/form-data" action="<?php echo base_url('admin/dataPegawai/updateDataAksi')?>">
                 <div class="card-body">
                     <?php foreach ($pegawai as $p): ?>
-                        
                         <!-- // Data User // -->
                         <h6 class="font-weight-bold"><i class="fas fa-user mr-3"></i>Data Pribadi</h6>
                         <hr>
-
-                        <!-- NIK -->
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">NIK</label>
-                            <div class="col-sm-8">
-                                <input id="id_pegawai" type="hidden" name="id_pegawai" class="form-control" value="<?php echo $p->id_pegawai ?>"/>
-                                <input id="cardID" type="text" name="nik" class="form-control" value="<?php echo $p->nik ?>"/>
-                                <?php echo form_error('nik', '<div class="text-small text-danger"></div>') ?>
-                            </div>
-                        </div>
 
                         <!-- Nama Pegawai -->
                         <div class="form-group row">
@@ -37,6 +26,20 @@
                             <div class="col-sm-8">
                                 <input type="text" id="cardName" name="nama_pegawai" class="form-control"  value="<?php echo $p->nama_pegawai ?>"/>
                                 <?php echo form_error('nama_pegawai', '<div class="text-small text-danger"></div>') ?>
+                            </div>
+                        </div>
+
+                        <!-- Jenis Kelamin -->
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label>Jenis Kelamin</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select name="jenis_kelamin" class="form-control">
+                                    <option value="Laki-laki" <?php if ($p->jenis_kelamin == 'Laki-laki') echo'selected'; ?>>Laki-laki</option>
+                                    <option value="Perempuan" <?php if ($p->jenis_kelamin == 'Perempuan') echo'selected'; ?>>Perempuan</option>
+                                </select>
+                                <?php echo form_error('jenis_kelamin', '<div class="text-small text-danger"></div>') ?>
                             </div>
                         </div>
 
@@ -51,21 +54,16 @@
                         </div>
 
                         <!-- // Pekerjaan // -->
-                        <!-- NIK -->
                         <h6 class="font-weight-bold mt-5"><i class="fas fa-briefcase mr-3"></i>Pekerjaan</h6>
                         <hr>
 
-                        <!-- Nama Pegawai -->
+                        <!-- NIK -->
                         <div class="form-group row">
-                            <div class="col-sm-4">
-                                <label>Jenis Kelamin</label>
-                            </div>
+                            <label class="col-sm-4 col-form-label">NIK</label>
                             <div class="col-sm-8">
-                                <select name="jenis_kelamin" class="form-control">
-                                    <option value="Laki-laki" <?php if ($p->jenis_kelamin == 'Laki-laki') echo'selected'; ?>>Laki-laki</option>
-                                    <option value="Perempuan" <?php if ($p->jenis_kelamin == 'Perempuan') echo'selected'; ?>>Perempuan</option>
-                                </select>
-                                <?php echo form_error('jenis_kelamin', '<div class="text-small text-danger"></div>') ?>
+                                <input id="id_pegawai" type="hidden" name="id_pegawai" class="form-control" value="<?php echo $p->id_pegawai ?>"/>
+                                <input id="cardID" type="text" name="nik" class="form-control" value="<?php echo $p->nik ?>"/>
+                                <?php echo form_error('nik', '<div class="text-small text-danger"></div>') ?>
                             </div>
                         </div>
 
@@ -167,8 +165,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     <?php endforeach;?>
                 </div>
                 <div class="card-footer text-muted">
@@ -258,11 +254,11 @@
     btnDownload.addEventListener("click", function (){
         html2canvas(document.querySelector("#canvas"), {
             logging: true,
-            allowTaint: true
+            allowTaint: true,
+            scrollY: -window.scrollY
         }).then(canvas => {
             let imgURL = canvas.toDataURL("image/png");
             console.log(imgURL);
-
             if (window.navigator.msSaveBlob) {
                 window.navigator.msSaveBlob(canvas,msToBlob(),"id-card.png");
             } else {

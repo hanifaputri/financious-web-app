@@ -31,7 +31,7 @@ class DataAbsensi extends CI_Controller {
             ORDER BY data_pegawai.nama_pegawai ASC
         ")->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/dataAbsensi', $data);
         $this->load->view('footer');
@@ -100,7 +100,7 @@ class DataAbsensi extends CI_Controller {
         ")->result()
         ;
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/formInputAbsensi', $data);
         $this->load->view('footer');

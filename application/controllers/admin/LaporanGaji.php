@@ -20,7 +20,7 @@ class LaporanGaji extends CI_Controller {
     {
         $data['title'] = "Laporan Gaji Pegawai";
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/filterLaporanGaji', $data);
         $this->load->view('footer');
@@ -53,7 +53,7 @@ class LaporanGaji extends CI_Controller {
         ")->result();
 
         if (count($data['cetakGaji'])>0){
-            $this->load->view('templates_admin/header', $data);
+            $this->load->view('header', $data);
             $this->load->view('admin/cetakDataGaji', $data);
         } else {
             $this->session->set_flashdata('pesan','

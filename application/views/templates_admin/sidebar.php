@@ -7,11 +7,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard')?>">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fab fa-hire-a-helper"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">HANIFUY <sup>TM</sup></div>
+                <div class="sidebar-brand-text mx-3">Financious</div>
             </a>
 
             <!-- Divider -->
@@ -103,13 +102,6 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            <div class="sidebar-card">
-                <img class="sidebar-card-illustration mb-2" src="<?php echo base_url() ?>assets/img/undraw_rocket.svg" alt="">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -130,7 +122,7 @@
                     <!-- Header Topbar
                     <li style="list-style-type:none;" class="nav-item no-arrow">
                         BEM FILKOM
-                    </li> -->
+                    </li> 
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -140,8 +132,11 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
-
+                    </form>-->
+                    <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100">
+                        <span><img style="height:50px;" class="mr-2" src="<?php echo base_url('assets/img/favicon.png')?>"/></span>
+                        <span class="font-weight-bold">SM Entertainment Company</span>
+                    </div>
                     <!-- Topbar Search 
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

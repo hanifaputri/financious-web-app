@@ -19,7 +19,7 @@
     <?php echo $this->session->flashdata('pesan') ?>
     <div class="table-responsive mb-4">
         <table id="dataTable" class="table table-bordered table-striped">
-            <thead class="thead-dark">
+            <thead>
                 <tr>
                     <th class="text-center">No</th>
                     <th class="text-center">Nama Jabatan</th>

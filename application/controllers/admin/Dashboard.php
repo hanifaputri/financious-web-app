@@ -14,21 +14,23 @@ class Dashboard extends CI_Controller {
             redirect('welcome');
         }
     }
+
     public function index()
     {
-        $data['title'] = "Dashboard ASD";
+        $data['title'] = "Dashboard";
         
         $pegawai = $this->db->query("SELECT * FROM data_pegawai");
-        $admin = $this->db->query("SELECT * FROM data_pegawai WHERE jabatan = 'Admin'");
+        $admin = $this->db->query("SELECT * FROM data_pegawai WHERE hak_akses = '1'");
         $jabatan = $this->db->query("SELECT * FROM data_jabatan");
         $kehadiran = $this->db->query("SELECT * FROM data_kehadiran");
        
-        $data['pegawai'] = $pegawai->num_rows();
+        $data['jumlah_pegawai'] = $pegawai->num_rows();
         $data['admin'] = $admin->num_rows();
         $data['jabatan'] = $jabatan->num_rows();
         $data['kehadiran'] = $kehadiran->num_rows();
+        $data['pegawai'] = $this->penggajianModel->get_data('data_pegawai')->result();
 
-        $this->load->view('templates_admin/header', $data);
+        $this->load->view('header', $data);
         $this->load->view('templates_admin/sidebar', $data);
         $this->load->view('admin/dashboard', $data);
         $this->load->view('footer');
